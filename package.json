@@ -1,0 +1,27 @@
+{
+  "name": "telegram-automation-tool",
+  "version": "1.0.0",
+  "description": "A Telegram automation tool that uses MTProto to send scheduled messages to groups and channels",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "telegram",
+    "automation",
+    "mtproto",
+    "scheduler"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "node-cron": "^3.0.2",
+    "telegram": "^2.15.5",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

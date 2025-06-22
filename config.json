@@ -1,0 +1,82 @@
+{
+  "auth": {
+    "phoneNumber": "",
+    "apiId": "",
+    "apiHash": ""
+  },
+  "messaging": {
+    "message": "Hello everyone! I'm a freelancer specializing in SEO and web development, If you're in need of top-notch services with affordable prices, feel free to reach out. Thank you.",
+    "targets": [
+      {
+        "type": "group",
+        "username": "frontenddisussion"
+      },
+      {
+        "type": "group",
+        "username": "freelancers_intl"
+      },
+      {
+        "type": "group",
+        "username": "@reactjs_jobs"
+      },
+      {
+        "type": "group",
+        "username": "@Digitalmarketingjobsinindia"
+      },
+      {
+        "type": "group",
+        "username": "@seo_freelancers"
+      },
+      {
+        "type": "group",
+        "username": "@Digitalmarketingjobsinindia"
+      },
+      {
+        "type": "group",
+        "username": "@FreelancersIndian"
+      },
+      {
+        "type": "group",
+        "username": "@reactjs2020"
+      },
+      {
+        "type": "group",
+        "username": "@sagarbhatnaggar"
+      },
+      {
+        "type": "group",
+        "username": "@BloggingFreelancers"
+      },
+      {
+        "type": "group",
+        "username": "@softwaredevelopersgroup"
+      },
+      {
+        "type": "group",
+        "username": "@MarketingMent"
+      },
+      {
+        "type": "group",
+        "username": "@freelancerssjobs"
+      },
+      {
+        "type": "group",
+        "username": "@free_lancer_jobs"
+      },
+      {
+        "type": "group",
+        "username": "@digital_connections/312"
+      }
+    ]
+  },
+  "scheduling": {
+    "type": "daily",
+    "times": ["22:00"]
+  },
+  "advanced": {
+    "sessionSavePath": "./session",
+    "logLevel": "info",
+    "retryAttempts": 3,
+    "retryDelay": 5000
+  }
+}
