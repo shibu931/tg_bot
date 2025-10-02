@@ -22,7 +22,7 @@ class Messenger {
   async sendMessage(target, message) {
     try {
       let entity;
-      
+
       if (target.type === 'chat' && target.id) {
         entity = target.id;
       } else if (target.username) {
@@ -30,36 +30,43 @@ class Messenger {
       } else {
         throw new Error('Invalid target configuration');
       }
-      
-      const result = await this.client.sendMessage(entity, { message });
-      
+
+      const options = { message };
+      // 👇 Add support for forum topics
+      if (target.threadId) {
+        options.replyTo = target.threadId;
+      }
+      console.log("Options ",options);
+
+      const result = await this.client.sendMessage(entity, options);
+
       this.logger.info(`Message sent successfully to ${target.type} ${target.username || target.id}`);
-      return { 
-        success: true, 
-        target, 
+      return {
+        success: true,
+        target,
         messageId: result.id,
-        timestamp: new Date().toISOString() 
+        timestamp: new Date().toISOString()
       };
     } catch (err) {
       // Handle specific error types
       if (err.message.includes('FLOOD_WAIT')) {
         const waitTime = this._extractFloodWaitTime(err.message);
         this.logger.warn(`Rate limited! Need to wait ${waitTime} seconds before sending to ${target.type} ${target.username || target.id}`);
-        return { 
-          success: false, 
-          target, 
+        return {
+          success: false,
+          target,
           error: 'RATE_LIMITED',
           waitTime,
-          timestamp: new Date().toISOString() 
+          timestamp: new Date().toISOString()
         };
       }
-      
+
       this.logger.error(`Failed to send message to ${target.type} ${target.username || target.id}: ${err.message}`);
-      return { 
-        success: false, 
-        target, 
-        error: err.message, 
-        timestamp: new Date().toISOString() 
+      return {
+        success: false,
+        target,
+        error: err.message,
+        timestamp: new Date().toISOString()
       };
     }
   }
@@ -73,28 +80,28 @@ class Messenger {
    */
   async sendMessagesToAllTargets(targets, message, delayBetweenMessages = 2000) {
     this.logger.info(`Starting to send messages to ${targets.length} targets`);
-    
+
     const results = [];
-    
+
     for (const target of targets) {
       const result = await this.sendMessage(target, message);
       results.push(result);
-      
+
       // If rate limited, wait the required time plus a small buffer
       if (result.error === 'RATE_LIMITED' && result.waitTime) {
         const waitMs = (result.waitTime * 1000) + 1000; // Convert to ms and add 1s buffer
-        this.logger.info(`Waiting ${waitMs/1000} seconds due to rate limiting`);
+        this.logger.info(`Waiting ${waitMs / 1000} seconds due to rate limiting`);
         await new Promise(resolve => setTimeout(resolve, waitMs));
       } else {
         // Add a small delay between messages to avoid rate limiting
         await new Promise(resolve => setTimeout(resolve, delayBetweenMessages));
       }
     }
-    
+
     // Log results
     const successCount = results.filter(r => r.success).length;
     this.logger.info(`Completed sending messages. Success: ${successCount}/${targets.length}`);
-    
+
     return results;
   }
 

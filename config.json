@@ -9,69 +9,18 @@
     "targets": [
       {
         "type": "group",
-        "username": "frontenddisussion"
-      },
-      {
-        "type": "group",
-        "username": "freelancers_intl"
-      },
-      {
-        "type": "group",
-        "username": "@reactjs_jobs"
-      },
-      {
-        "type": "group",
-        "username": "@Digitalmarketingjobsinindia"
-      },
-      {
-        "type": "group",
-        "username": "@seo_freelancers"
-      },
-      {
-        "type": "group",
-        "username": "@Digitalmarketingjobsinindia"
-      },
-      {
-        "type": "group",
-        "username": "@FreelancersIndian"
-      },
-      {
-        "type": "group",
-        "username": "@reactjs2020"
-      },
-      {
-        "type": "group",
-        "username": "@sagarbhatnaggar"
-      },
-      {
-        "type": "group",
-        "username": "@BloggingFreelancers"
-      },
-      {
-        "type": "group",
-        "username": "@softwaredevelopersgroup"
-      },
-      {
-        "type": "group",
-        "username": "@MarketingMent"
-      },
-      {
-        "type": "group",
-        "username": "@freelancerssjobs"
-      },
-      {
-        "type": "group",
         "username": "@free_lancer_jobs"
       },
       {
         "type": "group",
-        "username": "@digital_connections/312"
+        "username": "@digital_connections",
+        "threadId":316
       }
     ]
   },
   "scheduling": {
     "type": "daily",
-    "times": ["22:00"]
+    "times": ["16:58"]
   },
   "advanced": {
     "sessionSavePath": "./session",
